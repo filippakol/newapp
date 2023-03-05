@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      User body part #<%= @the_user_body_part.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/user_body_parts">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_user_body_part/<%= @the_user_body_part.id %>">
+          Delete user body part
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_user_body_part.user_id %>
+      </dd>
+
+      <dt>
+        Body part
+      </dt>
+      <dd>
+        <%= @the_user_body_part.body_part_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_body_part.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_user_body_part.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit user body part
+    </h2>
+
+    <form action="/modify_user_body_part/<%= @the_user_body_part.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_user_body_part.user_id %>">
+      </div>
+
+      <div>
+        <label for="body_part_id_box">
+          Body part
+        </label>
+
+        <input type="text" id="body_part_id_box" name="query_body_part_id" value="<%= @the_user_body_part.body_part_id %>">
+      </div>
+
+      <button>
+        Update user body part
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,77 @@
+<div>
+  <div>
+    <h1>
+     Recommended Stretches for #<%= @the_body_part.name %>
+    </h1>
+<%= @the_stretch.name %>
+<div>
+      <div>
+        <a href="/stretches/<%=@the_stretch.id%>">
+          Description of the stretch
+        </a>
+      </div>
+    <div>
+      <div>
+        <a href="/body_parts">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_body_part/<%= @the_body_part.id %>">
+          Delete body part
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+       Body Part Name
+      </dt>
+      <dd>
+        <%= @the_body_part.name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_body_part.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_body_part.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit body part
+    </h2>
+
+    <form action="/modify_body_part/<%= @the_body_part.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_body_part.name %>">
+      </div>
+
+      <button>
+        Update body part
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

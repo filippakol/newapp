@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      How-To-Do #<%= @the_stretch.name %>
+    </h1>
+
+    <div>
+      <div>
+        <a href="/stretches">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_stretch/<%= @the_stretch.id %>">
+          Delete stretch
+        </a>
+      </div>
+    </div>
+<% bookmark=Bookmark.where(
+  {
+    :user_id => session.fetch(:user_id),
+    :stretch_id => @the_stretch.id 
+  })
+    .at(0) %>
+<% if session[:user_id] != nil %>
+<% if bookmark != nil %>
+  <a href="/delete_bookmark/<%= bookmark.id %>">Un-bookmark</a>
+<% else %>
+<form action="/insert_bookmark" method="post">
+<input type="hidden" name ="query_stretch_id" value="<%= @the_stretch.id %>">
+<input type="hidden" name ="query_user_id" value="<%= session[:user_id]%>">
+<button>Bookmark this stretch</button>
+</form>
+<% end %>
+<% end %>
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_stretch.name %>
+      </dd>
+
+      <dt>
+        Body part
+      </dt>
+      <dd>
+        <%= @the_body_part.name %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_stretch.description %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_stretch.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_stretch.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit stretch
+    </h2>
+
+    <form action="/modify_stretch/<%= @the_stretch.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_stretch.name %>">
+      </div>
+
+      <div>
+        <label for="body_part_id_box">
+          Body part
+        </label>
+
+        <input type="text" id="body_part_id_box" name="query_body_part_id" value="<%= @the_stretch.body_part_id %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_stretch.description %>">
+      </div>
+
+      <button>
+        Update stretch
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
