@@ -1,4 +1,12 @@
 class StretchesController < ApplicationController
+  def add_user_bookmark
+    b=Bookmark.new
+    b.user_id=params.fetch("the_user_id")
+    b.stretch_id=params.fetch("the_stretch_id")
+    b.save
+    redirect_to ("/bookmarks"), :notice => "Bookmarked stretch"
+  end
+
   def index
     matching_stretches = Stretch.all
 

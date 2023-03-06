@@ -17,23 +17,26 @@
         </a>
       </div>
     </div>
-<% bookmark=Bookmark.where(
+
+<% current_user_bookmarks= bookmark=Bookmark.where(
   {
     :user_id => session.fetch(:user_id),
     :stretch_id => @the_stretch.id 
-  })
-    .at(0) %>
+  }) %>
+
+<% the_bookmark=current_user_bookmarks.at(0)%>
 <% if session[:user_id] != nil %>
-<% if bookmark != nil %>
-  <a href="/delete_bookmark/<%= bookmark.id %>">Un-bookmark</a>
-<% else %>
+<% if the_bookmark==nil %>
 <form action="/insert_bookmark" method="post">
 <input type="hidden" name ="query_stretch_id" value="<%= @the_stretch.id %>">
-<input type="hidden" name ="query_user_id" value="<%= session[:user_id]%>">
+
 <button>Bookmark this stretch</button>
 </form>
-<% end %>
-<% end %>
+<%else %>
+<a href="/delete_bookmark/<%= the_bookmark.id %>">Un-bookmark</a>
+<%end%>
+<%end%>
+
     <dl>
       <dt>
         Name

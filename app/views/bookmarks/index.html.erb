@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of Bookmarks
+      <%= @current_user.first_name%> Bookmarks
     </h1>
   </div>
 </div>
@@ -16,19 +16,16 @@
 
     <form action="/insert_bookmark" method="post">
       <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
         <label for="stretch_id_box">
           Stretch
         </label>
-
-        <input type="text" id="stretch_id_box" name="query_stretch_id">
+        <select name ="query_stretch_id">
+        <% Stretch.all.order(:name).each do |a_stretch| %>
+        <option value="<%=a_stretch.id%>">
+        <%= a_stretch.name%>
+        </option>
+        <%end%>
+        </select>
       </div>
 
       <button>
@@ -74,11 +71,11 @@
         </td>
 
         <td>
-          <%= a_bookmark.user_id %>
+          <%= a_bookmark.user.first_name %>
         </td>
 
         <td>
-          <%= a_bookmark.stretch_id %>
+          <%= a_bookmark.stretch.name %>
         </td>
 
         <td>

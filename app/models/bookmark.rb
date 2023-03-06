@@ -11,4 +11,5 @@
 class Bookmark < ApplicationRecord
   belongs_to(:user, { :required => true, :class_name => "User", :foreign_key => "user_id" })
   belongs_to(:stretch, { :required => true, :class_name => "Stretch", :foreign_key => "stretch_id" })
+  validates :stretch_id, :presence => true
 end

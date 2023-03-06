@@ -11,7 +11,7 @@
 <div>
   <div>
     <h2>
-      Add a new stretch
+      Feel free to add a new stretch to the list below!
     </h2>
 
     <form action="/insert_stretch" method="post">
@@ -90,9 +90,8 @@
         </td>
 
         <td>
-          <%= a_stretch.body_part_id %>
+          <%= a_stretch.body_part.name %>
         </td>
-
         <td>
           <%= a_stretch.description %>
         </td>
