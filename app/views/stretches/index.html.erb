@@ -1,5 +1,6 @@
+<hr>
 <div>
-  <div>
+  <div style="color:brown">
     <h1>
       List of all stretches
     </h1>
@@ -39,7 +40,7 @@
         <input type="text" id="description_box" name="query_description">
       </div>
 
-      <button>
+      <button class="btn btn-primary">
         Create stretch
       </button>
     </form>
@@ -51,59 +52,59 @@
   <div>
     <table border="1">
       <tr>
-        <th>
+        <th width= 50 style="text-align:center">
           ID
         </th>
 
-        <th>
+        <th width= 100 style="text-align:center"> 
           Name
         </th>
 
-        <th>
+        <th width= 100 style="text-align:center">
           Body part
         </th>
 
-        <th>
+        <th style="text-align:center">
           Description
         </th>
 
-        <th>
+        <th width= 100 style="text-align:center">
           Created at
         </th>
 
-        <th>
+        <th width= 100 style="text-align:center">
           Updated at
         </th>
-
-        <th>
+        <th width= 100 style="text-align:center">
+          About
         </th>
       </tr>
 
       <% @list_of_stretches.each do |a_stretch| %>
       <tr>
-        <td>
+        <td style="text-align:center">
           <%= a_stretch.id %>
         </td>
 
-        <td>
+        <td style="text-align:center">
           <%= a_stretch.name %>
         </td>
 
-        <td>
+        <td style="text-align:center">
           <%= a_stretch.body_part.name %>
         </td>
         <td>
           <%= a_stretch.description %>
         </td>
 
-        <td>
+        <td style="text-align:center">
           <%= time_ago_in_words(a_stretch.created_at) %> ago
         </td>
-        <td>
+        <td style="text-align:center">
           <%= time_ago_in_words(a_stretch.updated_at) %> ago
         </td>
 
-        <td>
+        <td style="text-align:center">
           <a href="/stretches/<%= a_stretch.id %>">
             Show details
           </a>
