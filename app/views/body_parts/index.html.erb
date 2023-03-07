@@ -1,18 +1,21 @@
-<div>
   <div>
-    <h1>
-      Are you feeling sore today? Do not worry anymore, the Stretch Master is here!
+    <h1 class="text-danger">
+      Are you feeling sore today?
     </h1>
   </div>
+<div>
+   <h1 class="text-warning">
+      Do not worry anymore! The Stretch Master is here!
+    </h1>
 </div>
 
 <hr>
 
 <div>
   <div>
-    <h2>
+    <h4>
       Feel free to add a different body part other than the ones listed below.
-    </h2>
+    </h4>
 
     <form action="/insert_body_part" method="post">
       <div>
@@ -23,7 +26,7 @@
         <input type="text" id="name_box" name="query_name">
       </div>
 
-      <button>
+      <button class="btn btn-primary">
         Create body part
       </button>
     </form>
@@ -35,45 +38,23 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
+        <th width= 100 style="text-align:center">
           Name
         </th>
 
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
+        <th style="text-align:center">
         Recommended Stretches
         </th>
       </tr>
 
       <% @list_of_body_parts.each do |a_body_part| %>
       <tr>
-        <td>
-          <%= a_body_part.id %>
-        </td>
 
-        <td>
+        <td style="text-align:center">
           <%= a_body_part.name %>
         </td>
 
-        <td>
-          <%= time_ago_in_words(a_body_part.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_body_part.updated_at) %> ago
-        </td>
-
-        <td>
+        <td style="text-align:center">
           <a href="/body_parts/<%= a_body_part.id %>">
             Show recommended stretches
           </a>
