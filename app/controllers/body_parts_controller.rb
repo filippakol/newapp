@@ -14,7 +14,7 @@ class BodyPartsController < ApplicationController
 
     @the_body_part = matching_body_parts.at(0)
     
-    matching_stretches = Stretch.where({ :id => the_id })
+    matching_stretches = Stretch.where({ :body_part_id => the_id })
 
     @the_stretch = matching_stretches.at(0)
 

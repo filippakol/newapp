@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+get("/", { :controller => "body_parts", :action => "index" })
 
   # Routes for the Bookmark resource:
   post("/add_bookmark", {:controller => "stretches", :action => "add_user_bookmark"})
