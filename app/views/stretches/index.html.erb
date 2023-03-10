@@ -28,8 +28,13 @@
         <label for="body_part_id_box">
           Body part
         </label>
-
-        <input type="text" id="body_part_id_box" name="query_body_part_id">
+        <select name ="query_body_part_id">
+        <% BodyPart.all.order(:name).each do |a_body| %>
+        <option value="<%=a_body.id%>">
+        <%= a_body.name%>
+        </option>
+        <%end%>
+        </select>
       </div>
 
       <div>

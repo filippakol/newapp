@@ -5,13 +5,21 @@
      Recommended Stretches for #<%= @the_body_part.name %>
     </h1>
     <br>
-<h2> <%= @the_stretch.name %> </h2>
+<h2>
+<% if @the_stretch == nil %> 
+We apologize, we will update our stretch list soon to include stretches for this bodypart.
+<% else%>
+<%=@the_stretch.name%>
+<%end%>
+</h2>
 <div>
       <div>
+      <% if @the_stretch != nil %> 
       Click here to find a description of the stretch!
         <a href="/stretches/<%=@the_stretch.id%>">
           Description of the stretch
         </a>
+        <%end%>
       </div>
     <div>
     <hr>
